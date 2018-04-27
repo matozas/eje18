@@ -16,37 +16,42 @@
       <form [formGroup]='formGroup'>
         <ion-list no-lines>
           <ion-item>
-            <ion-input placeholder="name" formControlName="Nname" type="text"></ion-input>
+            <ion-input placeholder="Nombre" formControlName="Nname" type="text" [(ngModel)]="Nname"></ion-input>
           </ion-item>
           <ion-item *ngIf="formGroup.controls['Nname'].errors?.required &&
           formGroup.controls['Nname'].touched">
             <p>*Campo nombre requerido</p>
           </ion-item>
+
+          <ion-item>
+              <ion-input placeholder="email" formControlName="Nemail" type="text"  [(ngModel)]="Nemail" ></ion-input>
+            </ion-item>
+            <ion-item *ngIf="formGroup.controls['Nemail'].errors?.required &&
+            formGroup.controls['Nemail'].touched">
+              <p>*Email Requerido</p>
+            </ion-item>
+
+            <ion-item>
+                <ion-input placeholder="Telefono" formControlName="Ntel" type="text" [(ngModel)]="Ntel"></ion-input>
+              </ion-item>
+              <ion-item *ngIf="formGroup.controls['Ntel'].errors?.required &&
+              formGroup.controls['Ntel'].touched">
+                <p>*Ingrese Numero de Telefono Obligatorio </p>
+              </ion-item>
+
+              <ion-item>
+                  <ion-input placeholder="Comentario" formControlName="Ncom" type="text" [(ngModel)]="Ncom"></ion-input>
+                </ion-item>
+                <ion-item *ngIf="formGroup.controls['Ncom'].errors?.required &&
+                formGroup.controls['Ncom'].touched">
+                  <p>*Ingrese un comentario Por Favor!! </p>
+                </ion-item>
+      
         </ion-list>
       </form>
     </ion-item>
 
-
-
-    <ion-item>
-      <ion-label floating>Nombre</ion-label>
-      <ion-input type="text" [(ngModel)]="nombre"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label floating>Email</ion-label>
-      <ion-input type="text" [(ngModel)]="email"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label floating>Telefono</ion-label>
-      <ion-input type="text" [(ngModel)]="telefono"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label floating>Comentario</ion-label>
-      <ion-input type="text" [(ngModel)]="comentario"></ion-input>
-    </ion-item>
-
+    
     <ion-item>
       <ion-label stacked>Acepto los términos y condiciones</ion-label>
     </ion-item>

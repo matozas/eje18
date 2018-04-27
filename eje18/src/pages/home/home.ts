@@ -18,17 +18,28 @@ export class HomePage {
   //2-creamos instancias de form group   y de abstract control encargados de administrar reglas
   formGroup: FormGroup;
   Nname: AbstractControl;
+  Nemail: AbstractControl;
+  Ntel: AbstractControl;
+  Ncom: AbstractControl;
 
 
   constructor(public navCtrl: NavController,
-    public formBuilder:FormBuilder 
+    public formBuilder: FormBuilder
   ) {//3-instancia form builde sirve para construir el form group
     this.formGroup = formBuilder.group({
-    Nname:['',Validators.required] //4-validaciones
-
+      Nname: ['', Validators.required], //4-validaciones
+      Nemail: ['', Validators.compose([Validators.maxLength(70),
+      Validators.pattern('^ [_ A-Za-z0-9 - \\ +] + (\\ [_ A-Za-z0-9. -] +) * @ [A-Za-z0-9 -] + (\\. [A-Za-z0-9] +) * (\\. [A-Za-z] {2,}) $ '), Validators.required])],
+      Ntel:['',Validators.required],
+      Ncom:['',Validators.required]
+    
+      //Nemail:[ 
     });
     //5-enlace para validacion y pasar al homehtml
-    this.Nname=this.formGroup.contains['Nname'];
+    this.Nname = this.formGroup.contains['Nname'];
+    this.Nemail = this.formGroup.contains['Nemail'];
+    this.Ntel = this.formGroup.contains['Ntel'];
+    this.Ncom = this.formGroup.contains['Ncom'];
   }
 
   gotoWelcome() {
@@ -38,6 +49,10 @@ export class HomePage {
         email: this.email,
         telefono: this.telefono,
         comentario: this.comentario,
+        Nname: this.Nname,
+        Nemail: this.Nemail,
+        Ntel: this.Ntel,
+        Ncom: this.Ncom
       };
       this.navCtrl.push(WelcomePage, data);
     }
